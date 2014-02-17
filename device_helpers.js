@@ -19,10 +19,12 @@ if (typeof Handlebars !== 'undefined') {
 
     if (Template[device_name]) {
       // Try to load the suffixed template
-      return new Handlebars.SafeString(Template[device_name]());
+      return Template[device_name];
     } else if (Template[name]) {
       // Fallback to unsuffixed template if suffixed template doesn't exist
-      return new Handlebars.SafeString(Template[name]());
+      return Template[name];
+    } else {
+      console.log("deviceRender could not find template", device_name, "or", name);
     }
   });
   
